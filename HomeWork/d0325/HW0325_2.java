@@ -2,14 +2,14 @@ package HomeWork.d0325;
 
 import java.util.Scanner;
 
-public class HW0325_2 extends CalPrint {
+public class HW0325_2 extends CalPrint {				// 2번과제 입니다
 	private Scanner sc = new Scanner(System.in);
 
 	HW0325_2() {
 
 	}
 	
-	public void changeMonth(int change) {
+	public void changeMonth(int change) {				// 월을 바꾸는 메소드입니다 월이 12를 초과하거나 1미만으로 떨어지면 년도를 바꿉니다.
 		int nextMonth = getMonth()+change;
 		if(nextMonth < 0) {
 			setYear(getYear()-1);
