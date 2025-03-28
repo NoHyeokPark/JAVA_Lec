@@ -31,11 +31,21 @@ public class Calculator {
 	}
 
 	int mul(int a, int b) {
-		return a * b;
+		int mul = 0;
+		for (int i = 0; i < b; i++) {
+			mul += a;
+		}
+		return mul;
 	}
 
 	int div(int a, int b) {
-		return a / b;
+		int div = 0;
+		while (a >= b) {
+			a -= b;
+			div++;
+		}
+		return div;
+
 	}
 
 	boolean prime(int a) {

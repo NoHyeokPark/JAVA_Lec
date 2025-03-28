@@ -1,3 +1,5 @@
+package HomeWork.d0324;
+
 import java.util.Scanner;
 
 public class SJF {

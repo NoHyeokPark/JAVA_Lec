@@ -25,6 +25,7 @@ public class Day0318HWString {
 		System.out.println("입력스트링 :String oriStr = " + as);
 		System.out.println("delChar = 'l' 인 경우 => " + StringUtil.removeChar(as, 'l'));
 		System.out.println("delChar = 'o' 인 경우 => " + StringUtil.removeChar(as, 'o'));
+		
 
 	}
 

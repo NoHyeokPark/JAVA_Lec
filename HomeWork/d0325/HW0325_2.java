@@ -9,7 +9,7 @@ public class HW0325_2 extends CalPrint {				// 2번과제 입니다
 
 	}
 	
-	public void changeMonth(int change) {				// 월을 바꾸는 메소드입니다 월이 12를 초과하거나 1미만으로 떨어지면 년도를 바꿉니다.
+	private void changeMonth(int change) {				// 월을 바꾸는 메소드입니다 월이 12를 초과하거나 1미만으로 떨어지면 년도를 바꿉니다.
 		int nextMonth = getMonth()+change;
 		if(nextMonth < 0) {
 			setYear(getYear()-1);
@@ -20,7 +20,7 @@ public class HW0325_2 extends CalPrint {				// 2번과제 입니다
 		}
 		setMonth(nextMonth+1);
 	}
-	
+	@Override
 	public void powerOn() {
 		System.out.println("항목을 선택하세요(1.현재 2.이전월 3.다음월 4.종료)");
 		switch (sc.nextInt()) {

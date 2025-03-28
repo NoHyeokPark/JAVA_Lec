@@ -4,14 +4,22 @@ public class StringUtil {
 
 	static int cnt;
 
-	char isUpperChar(char c) {
+	boolean isUpperChar(char c) {
+		return c >= 65 && c <= 90;
+	}
+
+	boolean isLowerChar(char c) {
+		return c >= 97 && c <= 122;
+	}
+
+    char toUpperChar(char c) {
 		if (c >= 97 && c <= 122) {
 			c -= 32;
 		}
 		return c;
 	}
 
-	char isLowerChar(char c) {
+	char toLowerChar(char c) {
 		if (c >= 65 && c <= 90) {
 			c += 32;
 		}
@@ -45,7 +53,7 @@ public class StringUtil {
 	String toUpperString(String str) {
 		char[] charArr = new char[str.length()];
 		for (int i = 0; i < str.length(); i++) {
-			charArr[i] = isUpperChar(str.charAt(i));
+			charArr[i] = toUpperChar(str.charAt(i));
 		}
 		return new String(charArr);
 	}
@@ -53,7 +61,7 @@ public class StringUtil {
 	String toLowerString(String str) {
 		char[] charArr = new char[str.length()];
 		for (int i = 0; i < str.length(); i++) {
-			charArr[i] = isLowerChar(str.charAt(i));
+			charArr[i] = toLowerChar(str.charAt(i));
 		}
 		return new String(charArr);
 	}

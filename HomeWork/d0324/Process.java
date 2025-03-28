@@ -1,3 +1,5 @@
+package HomeWork.d0324;
+
 public class Process {
 	int pid;
 	int burstTime;

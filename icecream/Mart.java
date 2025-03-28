@@ -1,4 +1,4 @@
-package house.persnal.re.icecream;
+package icecream;
 import java.util.Scanner;
 
 

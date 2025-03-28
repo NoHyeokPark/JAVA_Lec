@@ -10,7 +10,7 @@ public class HW0325_1 extends CalPrint {                // 1번과제 입니다
 
 	}
 
-	public void yearPrint() {                    //1달 달력을 출력하는 메소드를 12번 반복합니다
+	private void yearPrint() {                    //1달 달력을 출력하는 메소드를 12번 반복합니다
 		for (int i = 0; i < 12; i++) {
 			setMonth(i + 1);
 			numPrint();
@@ -41,12 +41,12 @@ public class HW0325_1 extends CalPrint {                // 1번과제 입니다
 		powerOn();
 	}
 
-	public void inYear() { 						//입력을 받아서 년도를 바꾸는 메소드입니다.
+	private void inYear() { 						//입력을 받아서 년도를 바꾸는 메소드입니다.
 		System.out.println("년도를 입력하세요");
 		setYear(sc.nextInt());
 	}
 
-	public void inMonth() {						//입력을 받아서 개월을 바꾸는 메소드입니다.
+	private void inMonth() {						//입력을 받아서 개월을 바꾸는 메소드입니다.
 		System.out.println("월을 입력하세요");
 		setMonth(sc.nextInt());
 	}
