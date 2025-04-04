@@ -1,9 +1,8 @@
-
 package FreeStudy;
 
 import java.util.Scanner;
 
-public class Main {
+public class Parallelogram {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -24,7 +23,7 @@ public class Main {
 			
 		}
 		
-
+		sc.close();
 	}
 	
 	static int pita (int x,int y) {
