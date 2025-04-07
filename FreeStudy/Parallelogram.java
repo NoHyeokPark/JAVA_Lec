@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Parallelogram {
 
 	public static void main(String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 		int x1 = sc.nextInt();
 		int y1 = sc.nextInt(); 
@@ -22,12 +23,13 @@ public class Parallelogram {
 			System.out.println(2*(Math.sqrt(Math.max(Math.max(a, b), c)) - Math.sqrt(Math.min(Math.min(a, b), c))));
 			
 		}
-		
 		sc.close();
+		
 	}
 	
 	static int pita (int x,int y) {
 		return (x*x+y*y);
+		
 	}
 	
 	
