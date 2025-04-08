@@ -1,10 +1,8 @@
-
 package FreeStudy;
 
 import java.util.Scanner;
 
-public class Main {
-
+public class B14215 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int[] arr = new int[3];
@@ -27,6 +25,3 @@ public class Main {
 		}
 	}
 }
-
-
-
