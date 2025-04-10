@@ -7,17 +7,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int a = sc.nextInt();
-		int sum = 1;
-		int cnt = 1;
-		
-		while(true) {
-			if(a<=sum) {
-				System.out.println(cnt);
-				break;
+		int n = sc.nextInt();
+		int sum = 0;
+		int max = 0;
+		for (int i = 0; i < n; i++) {
+			int b = sc.nextInt();
+			if (b > max) {
+				max = b;
 			}
-			sum += 6*cnt++;
+			sum += b;
 		}
+		System.out.println((double)sum/max*100/n);
 
 	}
 }
