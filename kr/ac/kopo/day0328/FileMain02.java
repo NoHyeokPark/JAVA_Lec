@@ -6,6 +6,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import kr.ac.kopo.util.FileClose;
+
 public class FileMain02 {
 
 	// 이미지의 복사본 생성
@@ -31,11 +33,12 @@ public class FileMain02 {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			FileClose.close(bis, fis, bos, fos);
+			/*
 			if (bis != null) {
 				try {
 					fis.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -63,6 +66,7 @@ public class FileMain02 {
 					e.printStackTrace();
 				}
 			}
+			*/
 
 		}
 		long end = System.currentTimeMillis();

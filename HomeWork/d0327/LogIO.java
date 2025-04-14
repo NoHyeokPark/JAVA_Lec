@@ -35,8 +35,11 @@ public class LogIO {
 			while (true) {
 				pass = scanInt("비밀번호를 입력하세요.");
 				int passCheck = scanInt("비밀번호를 다시 한번 입력하세요.");
-				if (pass == passCheck)
+				if (pass == passCheck) {
 					break;
+				} else {
+					System.out.println("비밀번호가 일치하지 않습니다");
+				}
 			}
 			while (true) {
 				e = scan("e-mail을 입력하세요.");
@@ -88,7 +91,7 @@ public class LogIO {
 			System.exit(0);
 		}
 		}
-		System.out.println(userDB.size());
+		
 	}
 	}
 
