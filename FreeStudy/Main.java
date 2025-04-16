@@ -9,32 +9,17 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 		int b = sc.nextInt();
-		int even = 1;
-		int odd = 1;
-
-		for (int i = 2; i <= a || i <= b;) {
-			int aa = a % i;
-			int bb = b % i;
-			if (aa != 0 && bb != 0) {
-				i++;
-			} else if (aa + bb == 0) {
-				even *= i;
-				a /= i;
-				b /= i;
-			} else {
-				if (aa == 0 && a > 0) {
-					odd *= i;
-					a /= i;
-				}
-				if (bb == 0 && b > 0) {
-					odd *= i;
-					b /= i;
-				}
-			}
-
+		if(b == a || b == 0) {
+			System.out.println(1);
+		}else {
+		System.out.println(fac(a)/fac(b)/fac(a-b));
 		}
-		System.out.println(even);
-		System.out.println(odd * even);
-
+	}
+	
+	public static int fac(int n){
+		for(int i = n-1 ; i > 0 ; i--) {
+			n *= i;
+		}
+		return n;
 	}
 }
