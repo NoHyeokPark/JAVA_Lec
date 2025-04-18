@@ -7,21 +7,25 @@ public class Main {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		sc.nextInt();
+		sc.nextLine();
 		String s = sc.nextLine();
-		int ans = 1;
-		int mul;
-		for(int i = 0 ; i < s.length(); i++) {
-			if(s.charAt(i) == 'c') {
-				mul = 26;
-			} else {
-				mul = 10;
+		int[] a = new int[4];
+		long ans = 1;
+		for (int i = 0; i < s.length(); i++) {
+			switch (s.charAt(i)) {
+			case 'A' -> a[0]++;
+			case 'C' -> a[1]++;
+			case 'G' -> a[2]++;
+			case 'T' -> a[3]++;
 			}
-			
-			if(i != 0 && s.charAt(i) == s.charAt(i-1)) {
-				mul -= 1;
-			}
-			ans *= mul;
+			;
+		}
+		for (int x : a) {
+			ans *= x;
+			ans %= 1000000007;
 		}
 		System.out.println(ans);
-}
+
+	}
 }
