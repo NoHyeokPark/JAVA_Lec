@@ -1,21 +1,21 @@
+package baekjoon;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
-
+public class B2750 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		sc.nextLine();
-		int[] arrx = new int[n];
-		int[] arry = new int[n];
+		int[] arr = new int[n];
 		for(int i = 0 ; i < n; i++) {
-			arrx[i] = sc.nextInt();
-			arry[i] = sc.nextInt();
+			arr[i] = sc.nextInt();
 		}
-		for() {}
-		
+		Arrays.sort(arr);
+		for(int i = 0 ; i < n; i++) {
+			System.out.println(arr[i]);
+		}
 		
 	}
 
