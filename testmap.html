@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>simpleMap</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script
+	src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=KOvbO4EDAR68Jci7iVMA79ZKr0hW0Mw085azgqcQ"></script>
+<script type="text/javascript">
+	var map, marker_s, marker_s_2, marker_e, marker_e_2;
+
+	function initTmap() {
+		// 1. 지도 띄우기
+		map = new Tmapv2.Map("map_div", {
+			center : new Tmapv2.LatLng(37.67861890855583, 126.91651485443151),
+			width : "100%",
+			height : "400px",
+			zoom : 10,
+			zoomControl : true,
+			scrollwheel : true
+
+		});
+
+		// 2. 시작, 도착 심볼찍기
+		// 시작1
+		marker_s = new Tmapv2.Marker(
+				{
+					position : new Tmapv2.LatLng(37.503666, 126.893489),
+					icon : "/upload/tmap/marker/pin_r_m_s.png",
+					iconSize : new Tmapv2.Size(24, 38),
+					map : map
+				});
+		
+		// 시작2
+		marker_s_2 = new Tmapv2.Marker(
+				{
+					position : new Tmapv2.LatLng(37.603666, 126.793489),
+					icon : "/upload/tmap/marker/pin_b_m_s.png",
+					iconSize : new Tmapv2.Size(24, 38),
+					map : map
+				});
+
+		// 도착1
+		marker_e = new Tmapv2.Marker(
+				{
+					position : new Tmapv2.LatLng(37.803666, 126.893489),
+					icon : "/upload/tmap/marker/pin_r_m_e.png",
+					iconSize : new Tmapv2.Size(24, 38),
+					map : map
+				});
+		
+		// 도착2
+		marker_e_2 = new Tmapv2.Marker(
+				{
+					position : new Tmapv2.LatLng(37.738107, 127.033925),
+					icon : "/upload/tmap/marker/pin_b_m_e.png",
+					iconSize : new Tmapv2.Size(24, 38),
+					map : map
+				});
+
+		//경로 별 라인 그리기
+		//보라색 라인
+		var polyline1 = new Tmapv2.Polyline({
+				path: [
+					new Tmapv2.LatLng(37.503666, 126.893489), // 선의 꼭짓점(marker_s) 좌표
+					new Tmapv2.LatLng(37.803666, 126.893489) // 선의 꼭짓점(marker_e) 좌표
+				],
+				strokeColor: "#dd00dd", // 라인 색상
+				strokeWeight: 6, // 라인 두께
+				map: map // 지도 객체
+        	});
+		//빨강색 라인
+		var polyline2 = new Tmapv2.Polyline({
+			path: [
+				new Tmapv2.LatLng(37.503666, 126.893489), // 선의 꼭짓점(marker_s) 좌표
+				new Tmapv2.LatLng(37.738107, 127.033925) // 선의 꼭짓점(marker_e_2) 좌표
+			],
+			strokeColor: "#ff0000", // 라인 색상
+			strokeWeight: 6, // 라인 두께
+			map: map // 지도 객체
+    	});
+		//초록색 라인
+		var polyline3 = new Tmapv2.Polyline({
+			path: [
+				new Tmapv2.LatLng(37.603666, 126.793489), // 선의 꼭짓점(marker_s_2) 좌표
+				new Tmapv2.LatLng(37.803666, 126.893489) // 선의 꼭짓점(marker_e) 좌표
+			],
+			strokeColor: "#006400", // 라인 색상
+			strokeWeight: 6, // 라인 두께
+			map: map // 지도 객체
+    	});
+		//파란색 라인
+		var polyline4 = new Tmapv2.Polyline({
+			path: [
+				new Tmapv2.LatLng(37.603666, 126.793489), // 선의 꼭짓점(marker_s_2) 좌표
+				new Tmapv2.LatLng(37.738107, 127.033925) // 선의 꼭짓점(marker_e_2) 좌표
+			],
+			strokeColor: "#0000ff", // 라인 색상
+			strokeWeight: 6, // 라인 두께
+			map: map // 지도 객체
+    	});
+
+		var param = JSON.stringify({
+			   "origins" : 
+				   [
+				       { 
+				         "lon" : "126.893489",
+				         "lat" : "37.503666",
+				          "poiId" : "123",
+				          "rpFlag" : "S",
+				          "linkId" :"123",
+				          "direction" : "1"
+				       },
+				      {
+				        "lon" : "126.793489",
+				        "lat" : "37.603666"
+				       }
+				   ] ,
+				   "destinations" : 
+				   [
+				       { 
+				         "lon" : "126.893489",
+				         "lat" : "37.803666",
+				         "poiId" : "456",
+				         "rpFlag" : "G",
+				         "linkId" : "999",
+				         "direction" : "3"   
+				       },
+				       {
+				         "lon" : "127.033925",
+				         "lat" : "37.738107",
+				         "poiId" : "789",
+				         "rpFlag" : "G",
+				         "linkId" : "1000"
+				       }
+				   ] 
+				   
+				});
+		var headers = {}; 
+		headers["appKey"]="발급AppKey";
+		headers["Content-Type"]="application/json";
+
+		// 3. 경로 매트릭스  API 사용요청
+		$
+				.ajax({
+					method : "POST",
+					url : "https://apis.openapi.sk.com/tmap/matrix",
+					headers : headers,
+					async : false,
+					data : param,
+					success : function(response) {
+						var matrixRoutes = response.matrixRoutes;
+						
+						var resultString =
+						"[보라색 선] - " + "S1(Red) 에서 E1(Red) 까지의 거리 : " + matrixRoutes[0].distance + "m" + " 시간 : " + matrixRoutes[0].duration + "초" + "</br>" +
+						"[빨강색 선] - " + "S1(Red) 에서 E2(Blue) 까지의 거리 : " + matrixRoutes[1].distance + "m" + " 시간 : " + matrixRoutes[1].duration + "초" + "</br>" +
+						"[초록색 선] - " + "S2(Blue) 에서 E1(Red) 까지의 거리 : " + matrixRoutes[2].distance + "m" + " 시간 : " + matrixRoutes[2].duration + "초" + "</br>" +
+						"[파란색 선] - " + "S2(Blue) 에서 E2(Blue) 까지의 거리 : " + matrixRoutes[3].distance + "m" + " 시간 : " + matrixRoutes[3].duration + "초"
+						
+						var resultDiv = document.getElementById("result");
+						resultDiv.innerHTML = resultString;
+					},
+					error : function(request, status, error) {
+						console.log("code:" + request.status + "\n"
+								+ "message:" + request.responseText + "\n"
+								+ "error:" + error);
+					}
+				});
+
+	}
+
+</script>
+<body onload="initTmap();">
+	<section class="in_section">
+		<div id="map_wrap" class="map_wrap3">
+			<div id="map_div"></div>
+		</div>
+		<div class="map_act_btn_wrap clear_box"></div>
+		<p id="result"></p>
+</body>
+</html>
